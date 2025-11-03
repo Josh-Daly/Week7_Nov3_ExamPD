@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String tempId, tempName, tempEmail, tempPhoneNumber, menuOption; //Temp values for creating Customer objs
+        String tempId, tempName, tempEmail, tempPhoneNumber; //Temp values for creating Customer objs
+        String menuOption; //Used as input from user for switch loop, decides what feature is being used
         ArrayList<Customer> customerList = new ArrayList<Customer>();
-        boolean flag = true;
-        int custIdFound = 0;
+        boolean flag = true; //Used to control menu loop
+        int custIdFound = 0; //Used for an if statement in the Update Customer feature
 
         while(flag){
             System.out.println("~~~Customer Management Menu~~~");
@@ -24,7 +25,7 @@ public class Main {
                     System.out.print("Customer ID: ");
                     tempId = scanner.nextLine();
 
-                    for(Customer customer : customerList){
+                    for(Customer customer : customerList){ //This loop checks if the ID is already used, prompts a new one until a different ID is entered
                         while(tempId.equals(customer.getCustomerId())){
                             System.out.println("ID already in system, enter a new ID: ");
                             tempId = scanner.nextLine();
@@ -43,11 +44,11 @@ public class Main {
                     customerList.add(tempCustomer);
                     break;
 
-                case "2":
-                    custIdFound = 0;
+                case "2": //Update Customer
+                    custIdFound = 0; //Resets this variable for use in this feature
                     System.out.println("Enter customer ID: ");
                     tempId = scanner.nextLine();
-                    for(Customer customer : customerList){
+                    for(Customer customer : customerList){ //Checking if ID is contained in the objects in the Customer List
                         if(tempId.equals(customer.getCustomerId())){
                             custIdFound = 1;
                             System.out.println("Customer found, please enter updated details: ");
@@ -61,7 +62,7 @@ public class Main {
                             System.out.print("Customer Phone Number: ");
                             tempPhoneNumber = scanner.nextLine();
 
-                            for(Customer Customer : customerList){
+                            for(Customer Customer : customerList){ //Another loop using the ID to find the customer details to change
                                 if(tempId.equals(Customer.getCustomerId())){
                                     customer.setName(tempName);
                                     customer.setEmail(tempEmail);
@@ -70,19 +71,19 @@ public class Main {
                             }
                         }
                     }
-                    if(custIdFound == 0){
+                    if(custIdFound == 0){ //ID does not match any object in List
                         System.out.println("Customer not found");
                     }
                     break;
 
-                case "3":
+                case "3": //Display Customers in List
                     System.out.println("Customer List:");
                     for (Customer customer : customerList) {
                         System.out.println(customer.toString());
                     }
                     break;
 
-                case "4":
+                case "4": //Exit
                     flag = false;
                     break;
             }

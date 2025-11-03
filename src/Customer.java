@@ -55,6 +55,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    //Give info in form of a string
     public String toString(){
         return "Customer Details: " + customerId + ", " + name + ", " + email + ", " + phoneNumber + ".";
     }
