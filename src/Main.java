@@ -5,29 +5,58 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String tempId, tempName, tempEmail, tempPhoneNumber; //Temp values for creating Customer objs
+        String tempId, tempName, tempEmail, tempPhoneNumber, menuOption; //Temp values for creating Customer objs
         ArrayList<Customer> customerList = new ArrayList<Customer>();
+        boolean flag = true;
 
-        System.out.println("Please enter Customer Info >");
+        while(flag){
+            System.out.println("~~~Customer Management Menu~~~");
+            System.out.println("1) Add Customer");
+            System.out.println("2) Update Customer");
+            System.out.println("3) Display Customers");
+            System.out.println("4) Exit");
+            menuOption = scanner.nextLine();
+            switch (menuOption){
+                case "1": //Add Customer
+                    System.out.println("Please enter Customer Info >");
 
-        System.out.print("Customer ID: ");
-        tempId = scanner.nextLine();
+                    System.out.print("Customer ID: ");
+                    tempId = scanner.nextLine();
 
-        System.out.print("Customer Name: ");
-        tempName = scanner.nextLine();
+                    for(Customer customer : customerList){
+                        while(tempId.equals(customer.getCustomerId())){
+                            System.out.println("ID already in system, enter a new ID: ");
+                            tempId = scanner.nextLine();
+                        }
+                    }
+                    System.out.print("Customer Name: ");
+                    tempName = scanner.nextLine();
 
-        System.out.print("Customer Email: ");
-        tempEmail = scanner.nextLine();
+                    System.out.print("Customer Email: ");
+                    tempEmail = scanner.nextLine();
 
-        System.out.print("Customer Phone Number: ");
-        tempPhoneNumber = scanner.nextLine();
+                    System.out.print("Customer Phone Number: ");
+                    tempPhoneNumber = scanner.nextLine();
 
-        Customer tempCustomer = new Customer(tempId, tempName, tempEmail, tempPhoneNumber);
-        customerList.add(tempCustomer);
+                    Customer tempCustomer = new Customer(tempId, tempName, tempEmail, tempPhoneNumber);
+                    customerList.add(tempCustomer);
+                    break;
 
-        System.out.println("Customer List:");
-        for(Customer customer : customerList){
-            System.out.println(customer.toString());
+                case "2":
+                    System.out.println("WIP");
+                    break;
+
+                case "3":
+                    System.out.println("Customer List:");
+                    for (Customer customer : customerList) {
+                        System.out.println(customer.toString());
+                    }
+                    break;
+
+                case "4":
+                    flag = false;
+                    break;
+            }
         }
     }
 }
