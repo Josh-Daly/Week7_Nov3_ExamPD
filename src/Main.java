@@ -23,6 +23,12 @@ public class Main {
                     System.out.print("Customer ID: ");
                     tempId = scanner.nextLine();
 
+                    for(Customer customer : customerList){
+                        while(tempId.equals(customer.getCustomerId())){
+                            System.out.println("ID already in system, enter a new ID: ");
+                            tempId = scanner.nextLine();
+                        }
+                    }
                     System.out.print("Customer Name: ");
                     tempName = scanner.nextLine();
 
@@ -41,13 +47,9 @@ public class Main {
                     break;
 
                 case "3":
-                    try {
-                        System.out.println("Customer List:");
-                        for (Customer customer : customerList) {
-                            System.out.println(customer.toString());
-                        }
-                    } catch (Exception e) {
-                        System.out.println("List is empty");
+                    System.out.println("Customer List:");
+                    for (Customer customer : customerList) {
+                        System.out.println(customer.toString());
                     }
                     break;
 
