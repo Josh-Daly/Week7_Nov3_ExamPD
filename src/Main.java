@@ -8,6 +8,7 @@ public class Main {
         String tempId, tempName, tempEmail, tempPhoneNumber, menuOption; //Temp values for creating Customer objs
         ArrayList<Customer> customerList = new ArrayList<Customer>();
         boolean flag = true;
+        int custIdFound = 0;
 
         while(flag){
             System.out.println("~~~Customer Management Menu~~~");
@@ -43,7 +44,35 @@ public class Main {
                     break;
 
                 case "2":
-                    System.out.println("WIP");
+                    custIdFound = 0;
+                    System.out.println("Enter customer ID: ");
+                    tempId = scanner.nextLine();
+                    for(Customer customer : customerList){
+                        if(tempId.equals(customer.getCustomerId())){
+                            custIdFound = 1;
+                            System.out.println("Customer found, please enter updated details: ");
+
+                            System.out.print("Customer Name: ");
+                            tempName = scanner.nextLine();
+
+                            System.out.print("Customer Email: ");
+                            tempEmail = scanner.nextLine();
+
+                            System.out.print("Customer Phone Number: ");
+                            tempPhoneNumber = scanner.nextLine();
+
+                            for(Customer Customer : customerList){
+                                if(tempId.equals(Customer.getCustomerId())){
+                                    customer.setName(tempName);
+                                    customer.setEmail(tempEmail);
+                                    customer.setPhoneNumber(tempPhoneNumber);
+                                }
+                            }
+                        }
+                    }
+                    if(custIdFound == 0){
+                        System.out.println("Customer not found");
+                    }
                     break;
 
                 case "3":
