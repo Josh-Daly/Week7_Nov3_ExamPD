@@ -77,9 +77,20 @@ public class Main {
                     break;
 
                 case "3": //Display Customers in List
-                    System.out.println("Customer List:");
-                    for (Customer customer : customerList) {
-                        System.out.println(customer.toString());
+                    //Quick Loop to determine whether there is any objects in the list, if not, prints no customers found
+                    int i = 0;
+                    for (Customer customer : customerList){
+                        i++;
+                    }
+
+                    if(i != 0){
+                        System.out.println("Customer List:");
+                        for (Customer customer : customerList) {
+                            System.out.println(customer.toString());
+                        }
+                    }
+                    else{
+                        System.out.println("No customers found");
                     }
                     break;
 
